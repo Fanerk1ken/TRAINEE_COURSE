@@ -22,11 +22,11 @@
 //         }
 //     },
 // };
-//
-// user.funcFunc()(); // ?
-// user.funcArrow()(); // ?
-// user.arrowFunc()(); // ?
-// user.arrowArrow()(); // ?
+
+// user.funcFunc()(); // ? global
+// user.funcArrow()(); // ? user
+// user.arrowFunc()(); // ? global
+// user.arrowArrow()(); // ? {}
 
 // 2
 // var poke1 = {name:'Pikachu'};
@@ -35,7 +35,7 @@
 //
 // var sayName = function(){ console.log(this.name) }
 //
-// sayName.bind(poke1).bind(poke2).call(poke3);
+// sayName.bind(poke1).bind(poke2).call(poke3);  //Pikachu
 
 
 // 3
@@ -51,14 +51,14 @@
 //         console.log(this.lastName);
 //     }
 // }
+
+// obj.showFirstName(); // ? Bill
+// obj.showLastName(); // ? стрелка не имеет собственного this, наследует его из внешнего контекста. undefined
+
+// obj.showFirstName.bind({ firstName: 'Boris' })(); // ? Boris
+// obj.showFirstName.bind({ firstName: 'Boris' }).bind({ firstName: 'Oleg' })(); // ? Boris
 //
-// obj.showFirstName(); // ?
-// obj.showLastName(); // ?=
-//
-// obj.showFirstName.bind({ firstName: 'Boris' })(); // ?
-// obj.showFirstName.bind({ firstName: 'Boris' }).bind({ firstName: 'Oleg' })(); // ?
-//
-// obj.showLastName.bind({ lastName: 'Boris' })(); // ?
+// obj.showLastName.bind({ lastName: 'Boris' })(); // ? undefined
 
 // 4
 
@@ -69,12 +69,13 @@
 //     }
 // }
 //
-// setTimeout(user.fn, 1000)
+// setTimeout(user.fn.bind(user), 1000)
 
 
 
-// Что будет выведено в консоль после истечения таймаута и почему?
-// Сделайте так, чтоб починить и выводило "Mike"
+// Что будет выведено в консоль после истечения таймаута и почему?  // undefined, контекст теряется и this указывает
+// не на user, а на глобальный объект.
+// Сделайте так, чтоб починить и выводило "Mike" // .bind(user)
 
 // Подсказка - ответ найдете в 5 ссылке README
 
@@ -100,7 +101,6 @@
 //
 // };
 //
-// askPassword(user.loginOk, user.loginFail) //***;
-
+// askPassword(user.loginOk.bind(user), user.loginFail.bind(user)) //***;
 
 

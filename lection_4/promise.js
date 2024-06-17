@@ -1,34 +1,34 @@
-// const promise = new Promise(function(resolve, reject) {
-//     setTimeout(()=> {
-//         resolve(123)
-//     }, 1000)
-// });
-//
-// promise
-//     .then((data)=> console.log('data', data), (error)=> console.log('err', error))
+const promise = new Promise(function(resolve, reject) {
+    setTimeout(()=> {
+        resolve(123)
+    }, 1000)
+});
 
-// const promise2 = new Promise(function(resolve, reject) {
-//     setTimeout(()=> {
-//         console.log('reject')
-//         reject(123)
-//     }, 1000)
-// });
-//
-// promise2
-//     .catch((error)=> {
-//         console.log('catch error', error)
-//
-//         return 456
-//     })
-//     .then((data)=>console.log('next promise', data))
+promise
+    .then((data)=> console.log('data', data), (error)=> console.log('err', error))
 
-// const promise3 = new Promise((resolve, reject) => {
-//     setTimeout(() => resolve("value"), 2000);
-// })
-//
-// promise3
-//     .finally((data) => console.log("Промис завершён", data))
-//     .then(result => console.log(result));
+const promise2 = new Promise(function(resolve, reject) {
+    setTimeout(()=> {
+        console.log('reject')
+        reject(123)
+    }, 1000)
+});
+
+promise2
+    .catch((error)=> {
+        console.log('catch error', error)
+
+        return 456
+    })
+    .then((data)=>console.log('next promise', data))
+
+const promise3 = new Promise((resolve, reject) => {
+    setTimeout(() => resolve("value"), 2000);
+})
+
+promise3
+    .finally((data) => console.log("Промис завершён", data))
+    .then(result => console.log(result));
 
 // неправильный чейнинг
 

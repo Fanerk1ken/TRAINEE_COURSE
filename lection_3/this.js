@@ -134,20 +134,19 @@
 //             console.log(`${name} ${this.surname}`)
 //         })
 //     },
-// }
-
-//     getFullName1() {
+//
+//     getFullName2() {
 //         this.names.forEach((function (name) {
 //             console.log(`${name} ${this.surname}`)
 //         }).bind(this))
 //     },
-
+//
 //     getFullName3() {
 //         this.names.forEach(function (name) {
 //             console.log(`${name} ${this.surname}`)
 //         }, this)
 //     },
-//
+// }
 // obj.getFullName1()
 // console.log('---')
 // obj.getFullName2()
@@ -187,12 +186,12 @@ const obj = {
 const b = fn.call(obj)
 
 b.getX()
-b.getAnotherX()
-
-const value3 = b.getX;
-value3()
-const value4 = b.getAnotherX
-value4()
+// b.getAnotherX()
+//
+// const value3 = b.getX;
+// value3()
+// const value4 = b.getAnotherX
+// value4()
 
 // let foo = {
 //     x: 42,

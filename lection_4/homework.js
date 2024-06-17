@@ -165,16 +165,20 @@ function bazPromise () {
     })
 }
 
-async function correctAnswer () {
-    const fooA = await fooPromise()
-    console.log(fooA)
-    const barB = await barPromise()
-    console.log(barB)
-    const bazC = await bazPromise()
-    console.log(bazC)
+let promisify = (func) => new Promise((resolve) => {
+    return func(resolve)
+})
+
+function fooBarBaz() {
+    Promise.all([
+        promisify(foo),
+        promisify(bar),
+        promisify(baz)
+    ]).then(res => res.forEach(result => console.log(result)))
+
 }
 
-correctAnswer()
+fooBarBaz()
 
 // какой-то промис хэлл получился, я уверен в том, что так никто не делает. НУЖЕН ФИДБЭК
 
@@ -185,29 +189,29 @@ correctAnswer()
 
 ///////////////
 // todo Объяснить код, рассказать какие консоли и в какой последовательности будут, а затем переписать его на промисы
-function resolveAfter2Seconds(x) {
-    console.log(`Какой Х пришёл -> ${x}`)
-    return new Promise(resolve => {
-        setTimeout(() => {
-            resolve(x); //
-        }, 5000);
-    });
-}
-function add1ByPromise(x) {
-    console.log('add1 Hello')
-    return new Promise((resolve) => {
-        resolve(resolveAfter2Seconds(20))
-    })
-        .then((a) => {
-            return new Promise((resolve) => {
-                resolve(resolveAfter2Seconds(30))
-            }).then((b) => {
-                console.log('add1 Bye')
-                return x + a + b
-            })
-        })
-}
-add1ByPromise(10).then(console.log)
+// function resolveAfter2Seconds(x) {
+//     console.log(`Какой Х пришёл -> ${x}`)
+//     return new Promise(resolve => {
+//         setTimeout(() => {
+//             resolve(x); //
+//         }, 5000);
+//     });
+// }
+// function add1ByPromise(x) {
+//     console.log('add1 Hello')
+//     return new Promise((resolve) => {
+//         resolve(resolveAfter2Seconds(20))
+//     })
+//         .then((a) => {
+//             return new Promise((resolve) => {
+//                 resolve(resolveAfter2Seconds(30))
+//             }).then((b) => {
+//                 console.log('add1 Bye')
+//                 return x + a + b
+//             })
+//         })
+// }
+// add1ByPromise(10).then(console.log)
 // async function add1(x) {
 //     console.log('add1 Hello')
 //     const a = await resolveAfter2Seconds(20);

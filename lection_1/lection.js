@@ -153,8 +153,8 @@
 // console.log({} + 1)
 
 // console.log(null + false  - true + 25 + +[])
-const isEqualInt = 2 === 2
-let sum = [] - isEqualInt + undefined - null
+// const isEqualInt = 2 === 2
+// let sum = [] - isEqualInt + undefined - null
 // console.log(sum)
 // console.log('ba' + +[1,2,3])
 // console.log(Array(5).join('wat' - 1) + ' Batman!')

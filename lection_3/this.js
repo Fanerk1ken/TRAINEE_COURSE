@@ -58,11 +58,11 @@
 //         console.log(this.price - disc / 100 * this.price);
 //     }
 // }
-//
+
 // item1.getPrice()
 // item1.calculatePrice(25)
 // item1.getPrice.call(item2)
-// item1.calculatePrice.apply(item2, 33)
+// item1.calculatePrice.apply(item2, [33])
 
 // 3. Пример this с привязкой контекста для функций
 // const item = {
@@ -167,32 +167,32 @@
 // k.bind({name: 'Mike'}).bind({name: 'Alice'})()
 //////////////////
 
-function fn() {
+// function fn() {
+//
+//     return {
+//         x: 20,
+//         getX() {
+//             console.log(this.x)
+//         },
+//         getAnotherX: ()=> {
+//             console.log(this.x)
+//         }
+//     }
+// }
 
-    return {
-        x: 20,
-        getX() {
-            console.log(this.x)
-        },
-        getAnotherX: ()=> {
-            console.log(this.x)
-        }
-    }
-}
-
-const obj = {
-    x: 10
-}
-
-const b = fn.call(obj)
-
-b.getX()
-b.getAnotherX()
-
-const value3 = b.getX;
-value3()
-const value4 = b.getAnotherX
-value4()
+// const obj = {
+//     x: 10
+// }
+//
+// const b = fn.call(obj)
+//
+// b.getX()
+// b.getAnotherX()
+//
+// const value3 = b.getX;
+// value3()
+// const value4 = b.getAnotherX
+// value4()
 
 // let foo = {
 //     x: 42,
